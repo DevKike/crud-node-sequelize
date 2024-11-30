@@ -1,9 +1,0 @@
-{
-  "development": {
-    "username": "root",
-    "password": "Alvaro1516!",
-    "database": "task_crud",
-    "host": "localhost",
-    "dialect": "mysql"
-  }
-}
