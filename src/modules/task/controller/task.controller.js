@@ -26,6 +26,8 @@ const getTasks = async () => {
 };
 
 const updateTask = async (taskToUpdate, taskId) => {
+  await getById(taskId);
+
   await update(taskToUpdate, taskId);
 }
 
