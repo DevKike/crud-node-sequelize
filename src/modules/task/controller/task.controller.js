@@ -1,4 +1,10 @@
-const { create, findAll, findById, update } = require('../service/task.service');
+const {
+  create,
+  findAll,
+  findById,
+  update,
+  destroy,
+} = require('../service/task.service');
 const NotFoundException = require('../../../exceptions/NotFoundException');
 
 const createTask = async (taskData) => {
@@ -29,6 +35,12 @@ const updateTask = async (taskToUpdate, taskId) => {
   await getById(taskId);
 
   await update(taskToUpdate, taskId);
-}
+};
 
-module.exports = { createTask, getById, getTasks, updateTask };
+const deleteTask = async (taskId) => {
+  await getById(taskId);
+
+  await destroy(taskId);
+};
+
+module.exports = { createTask, getById, getTasks, updateTask, deleteTask };

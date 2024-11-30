@@ -4,6 +4,7 @@ const {
   getTasks,
   getById,
   updateTask,
+  deleteTask,
 } = require('./controller/task.controller');
 const schemaValidator = require('../../middlewares/schemaValidator.middleware');
 const { createTaskSchema, updateTaskSchema } = require('./schema/task.schema');
@@ -66,5 +67,15 @@ taskRouter.patch(
     }
   }
 );
+
+taskRouter.delete('/:id', async (req, res, next) => {
+  try {
+    await deleteTask(req.params.id);
+
+    res.sendStatus(204);
+  } catch (error) {
+    next(error);
+  }
+});
 
 module.exports = taskRouter;
