@@ -1,0 +1,27 @@
+{
+  "name": "crud-node-sequelize",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "npx nodemon src/index.js",
+    "migration:generate": "sequelize-cli migration:generate",
+    "migration:run": "sequelize-cli db:migrate",
+    "migration:undo": "sequelize-cli db:migrate: undo"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.1",
+    "joi": "^17.13.3",
+    "mysql2": "^3.11.5",
+    "sequelize": "^6.37.5"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "nodemon": "^3.1.7",
+    "sequelize-cli": "^6.6.2"
+  }
+}
