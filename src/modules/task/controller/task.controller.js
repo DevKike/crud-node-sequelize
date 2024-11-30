@@ -1,4 +1,4 @@
-const { create, findAll } = require('../service/task.service');
+const { create, findAll, findById } = require('../service/task.service');
 const NotFoundException = require('../../../exceptions/NotFoundException');
 
 const createTask = async (taskData) => {
@@ -15,4 +15,14 @@ const getTasks = async () => {
   return tasks;
 };
 
-module.exports = { createTask, getTasks };
+const getById = async (id) => {
+  const task = await findById(id);
+
+  if (!task) {
+    throw new NotFoundException(`Task with ID ${id} was not found`);
+  }
+
+  return task;
+}
+
+module.exports = { createTask, getTasks, getById };
