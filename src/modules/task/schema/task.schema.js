@@ -2,10 +2,17 @@ const Joi = require('joi');
 
 const title = Joi.string();
 const description = Joi.string();
+const finish = Joi.boolean();
 
 const createTaskSchema = Joi.object({
   title: title.required(),
   description: description.required(),
 });
 
-module.exports = createTaskSchema;
+const updateTaskSchema = Joi.object({
+  title: title,
+  description: description,
+  finish: finish,
+});
+
+module.exports = { createTaskSchema, updateTaskSchema };

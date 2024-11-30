@@ -3,9 +3,10 @@ const {
   createTask,
   getTasks,
   getById,
+  updateTask,
 } = require('./controller/task.controller');
 const schemaValidator = require('../../middlewares/schemaValidator.middleware');
-const createTaskSchema = require('./schema/task.schema');
+const { createTaskSchema, updateTaskSchema } = require('./schema/task.schema');
 
 const taskRouter = express.Router();
 
@@ -51,5 +52,19 @@ taskRouter.get('/', async (req, res, next) => {
     next(error);
   }
 });
+
+taskRouter.patch(
+  '/:id',
+  schemaValidator(updateTaskSchema),
+  async (req, res, next) => {
+    try {
+      await updateTask(req.body, req.params.id);
+
+      res.sendStatus(204);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
 
 module.exports = taskRouter;
