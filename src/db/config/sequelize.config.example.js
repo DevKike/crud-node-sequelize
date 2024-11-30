@@ -1,4 +1,5 @@
 const { Sequelize } = require('sequelize');
+const setupModel = require('../setupModel');
 
 const DB_NAME = '';
 const DB_USER = '';
@@ -12,5 +13,7 @@ const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
   port: DB_PORT,
   dialect: DB_DIALECT,
 });
+
+setupModel(sequelize);
 
 module.exports = sequelize;
