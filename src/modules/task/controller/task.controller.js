@@ -5,6 +5,16 @@ const createTask = async (taskData) => {
   return await create(taskData);
 };
 
+const getById = async (id) => {
+  const task = await findById(id);
+
+  if (!task) {
+    throw new NotFoundException(`Task with ID ${id} was not found`);
+  }
+
+  return task;
+};
+
 const getTasks = async () => {
   const tasks = await findAll();
 
@@ -15,14 +25,4 @@ const getTasks = async () => {
   return tasks;
 };
 
-const getById = async (id) => {
-  const task = await findById(id);
-
-  if (!task) {
-    throw new NotFoundException(`Task with ID ${id} was not found`);
-  }
-
-  return task;
-}
-
-module.exports = { createTask, getTasks, getById };
+module.exports = { createTask, getById, getTasks };

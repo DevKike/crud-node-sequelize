@@ -26,19 +26,6 @@ taskRouter.post(
   }
 );
 
-taskRouter.get('/', async (req, res, next) => {
-  try {
-    const tasks = await getTasks();
-
-    res.status(200).json({
-      message: 'Tasks obtained with success',
-      tasks,
-    });
-  } catch (error) {
-    next(error);
-  }
-});
-
 taskRouter.get('/:id', async (req, res, next) => {
   try {
     const task = await getById(req.params.id);
@@ -46,6 +33,19 @@ taskRouter.get('/:id', async (req, res, next) => {
     res.status(200).json({
       message: 'Task obtained with success',
       task,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+taskRouter.get('/', async (req, res, next) => {
+  try {
+    const tasks = await getTasks();
+
+    res.status(200).json({
+      message: 'Tasks obtained with success',
+      tasks,
     });
   } catch (error) {
     next(error);
