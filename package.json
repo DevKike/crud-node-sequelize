@@ -7,12 +7,12 @@
     "dev": "npx nodemon src/index.js",
     "migration:generate": "sequelize-cli migration:generate",
     "migration:run": "sequelize-cli db:migrate",
-    "migration:undo": "sequelize-cli db:migrate: undo"
+    "migration:undo": "sequelize-cli db:migrate:undo"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "",  
   "dependencies": {
     "express": "^4.21.1",
     "joi": "^17.13.3",
